@@ -1,0 +1,156 @@
+---
+title: "MerinsWork"
+author: "ASHA"
+date: '2022-08-26'
+output:
+  word_document: default
+  html_document: default
+---
+## Homework 3
+
+### 1. Read in the data.
+
+```{r}
+library(lubridate)
+library(tidyr)
+library(skimr)
+library(janitor)
+library(dplyr)
+library(ggplot2)
+
+library(readr)
+library(purrr)
+DRG_data <- read_csv("C:/Users/bobyj/OneDrive/Documents/Asha/Work_from_merin/DRG_data.csv")
+#View(DRG_data)
+```
+
+### 2. Make a single plot with boxplots of the average medicare payments by DRG code. This is the amount of money that medicare pays for the DRG code. Note that this may take some finessing to make a plot that has relevant information and is visually appealing! What do you notice from the plots?
+
+```{r}
+
+DRG_data %>% 
+  separate(`DRG Definition`, into=c('DRGcode','Information'),sep = "-") %>% 
+  rename(Avg_Medi_Payments=`Average Medicare Payments`) %>% 
+  group_by(DRGcode) %>% 
+  summarise(Mean=mean(Avg_Medi_Payments)) %>% 
+  ggplot()+
+  geom_boxplot(aes(x=DRGcode,y=Mean),color="red")+
+  theme(axis.text.x = element_text(angle = 90))+
+  labs(title = "The mean medicare payments of each DRG codes",y="Mean medicare pay")
+```
+
+**Ans:- 1. Most of the pay is less than $10,000**
+
+**2. Able to see the high paying codes too **
+
+### 3. Do the same as (2) for the average total payments. This is the total amount paid for the claim (including the part that is paid for by the patient). What do you notice from the plots? Does the plot differ from the plot you made in part 2?
+
+```{r}
+DRG_data %>% 
+  separate(`DRG Definition`, into=c('DRGcode','Information'),sep = "-") %>% 
+  rename(Avg_Total_Payments=`Average Total Payments`) %>% 
+  group_by(DRGcode) %>% 
+  summarise(Mean=mean(Avg_Total_Payments)) %>% 
+  ggplot()+
+  geom_boxplot(aes(x=DRGcode,y=Mean),color="red")+
+  theme(axis.text.x = element_text(angle = 90))+
+  labs(title = "The mean Total payments of each DRG codes",y="Mean Total pay")
+```
+
+**Ans:- Dont see much difference**
+
+### 4. Read pages 98 to 103 of Modern Data Science with R. The functions spread() and gather() are from the package tidyr and are very useful for manipulating your data from narrow to wide format and back again! Select the variables ‘DRG.Definition’, ‘Provider.Id’, ‘Provider.State’ , and ‘Average.Medicare.Payments’ and use the spread() function to put the data into wide format with a column for each of the DRG codes containing the average medicare payments.
+
+```{r}
+
+DRG_wide<-
+  DRG_data %>% 
+  select(`DRG Definition`,`Provider Id`,`Provider State`,`Average Medicare Payments`) %>% 
+  spread(key= "DRG Definition",
+         value = "Average Medicare Payments")
+DRG_wide
+
+```
+
+
+### 5. Write a for loop to calculate the mean, median, and standard deviation of the average medicare payments for each DRG code column. Which DRG code has the max mean, median, and sd and what are these values? The minimum mean, median, and sd and what are these values? Remember that if you are performing any operation more than twice you should write a function to do it!
+
+```{r}
+
+DRG_wide1<-
+  DRG_wide %>% 
+  select(-`Provider Id`,-`Provider State`)
+
+vec<-c("mean","median","sd")
+  
+MINnMAX <- function(x)
+{
+  print(paste0("min value of ",i," of medicare payments for each DRG code"))
+  B<-min(x)
+  print(B)
+  print(paste0("max value of ",i," of medicare payments for each DRG code"))
+  C<-max(x)
+  print(C)
+}
+
+for (i in vec) {
+  A<-
+    DRG_wide1 %>% 
+  summarise_all(list(i),na.rm = TRUE)
+  MINnMAX(A)
+}
+
+```
+
+
+### 6. Do the same with a single map and a single apply statement.
+
+```{r}
+
+vec<-c("mean","median","sd")
+  
+MMSfun <- function(i)
+  {
+  A<-
+    DRG_wide1 %>% 
+  summarise_all(list(i),na.rm = TRUE)
+  print(paste0("min value of ",i," of medicare payments for each DRG code"))
+  B<-min(A)
+  print(B)
+  print(paste0("max value of ",i," of medicare payments for each DRG code"))
+  C<-max(A)
+  print(C)
+}
+#MMSfun("mean")
+map_dbl(vec,~MMSfun(.))
+
+sapply(X=vec,FUN=MMSfun)
+```
+
+
+### 7. Use a do() statement to return the provider in each state with the most expensive average medicare payments for the DRG code ‘870 - SEPTICEMIA OR SEVERE SEPSIS W MV 96+ HOURS’. Join with the original data to find the name of the most expensive provider in New York. Do the same for two other DRG codes of your choosing. Remember the rule for copying and pasting code more than 2 times!
+
+```{r}
+#?do
+
+ DRG_870<-
+   DRG_wide %>% 
+  select(`870 - SEPTICEMIA OR SEVERE SEPSIS W MV 96+ HOURS`,`Provider State`,`Provider Id`) %>% 
+   rename(code_870=`870 - SEPTICEMIA OR SEVERE SEPSIS W MV 96+ HOURS`)
+
+DRG_870_gp <-
+  DRG_870 %>% 
+   group_by(`Provider State`) %>% 
+   summarise(
+  code_870=max(code_870,na.rm = TRUE)
+ ) 
+
+inner_join(DRG_870,DRG_870_gp,by="code_870") %>% 
+  select(`Provider State.x`,`Provider Id`,code_870) %>% 
+  rename(Provider_state=`Provider State.x`,
+         Provider=`Provider Id`,HighestMedPay_code870=code_870)
+
+```
+
+**Was not able to use the do() function! **
+
