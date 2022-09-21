@@ -1,0 +1,632 @@
+---
+title: "BellaBeat_CaseStudy"
+author: "ASHA ITTIYERA"
+date: '2022-05-05'
+output:
+  word_document: default
+  html_document: default
+---
+# ANALYSIS ON FITBIT FITNESS TRACKER DATA
+
+## INTRODUCTION
+
+#####     **Purpose:** To Finish A CaseStudy as part of my Google Data Analytics Certification
+
+#####     **The Case Study Question:** HOW CAN A WELLNESS TECHNOLOGY COMPANY PALY IT SMART ?
+
+##### **Scenario:** I am a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women.I have been asked to focus on one of Bellabeat’s products and analyze smart device data to gain insight into how consumers are using their smart devices. The insights I discover will then help guide marketing strategy for the company. 
+
+##### **About Bellabeat**
+
+Bellabeat is a successful small company, but they have the potential to become a larger player in the global smart device market. Urška Sršen, cofounder and Chief Creative Officer of Bellabeat, believes that analyzing smart device fitness data could help unlock new growth opportunities for the company.  
+
+##### Bellabeat Products
+
+**Bellabeat app:** The Bellabeat app provides users with health data related to their activity, sleep, stress, menstrual cycle, and mindfulness habits. This data can help users better understand their current habits and make healthy decisions. The Bellabeat app connects to their line of smart wellness products.
+
+**Leaf:** Bellabeat’s classic wellness tracker can be worn as a bracelet, necklace, or clip. The Leaf tracker connects to the Bellabeat app to track activity, sleep, and stress.
+
+**Time:** This wellness watch combines the timeless look of a classic timepiece with smart technology to track user activity, sleep, and stress. The Time watch connects to the Bellabeat app to provide you with insights into your daily wellness.
+
+**Spring:** This is a water bottle that tracks daily water intake using smart technology to ensure that you are appropriately hydrated throughout the day. The Spring bottle connects to the Bellabeat app to track your hydration levels.
+Bellabeat membership: Bellabeat also offers a subscription-based membership program for users.
+
+**Bellabeat membership:** Bellabeat Membership gives users 24/7 access to fully personalized guidance on nutrition, activity, sleep, health and beauty, and mindfulness based on their lifestyle and goals.
+
+I would like to focus on the product ***Bellabeat Leaf***, as it multipurpose as a tracker and 3  different accessories for a woman. It looks like a very beautiful accessory and works as a fitness tracker to achieve all wellness goals. And also no charging needed for this product,6 months minimum battery life is there.
+
+## RESULTS OF THE ANALYSIS
+
+***Key Points:-***
+
+* The available data set being limited for a proper analysis, I still was able to see some trends in the people who use fitness trackers. The major limitations of the data set were, sample size was small and there was no gender information. For better insights for Bellabeat products it is advised to analyze female fitness tracker users data with a larger sample size. <br/>
+* As conclusion Key take away is,   **Make a consistent growth in business by Motivating, Appreciating , Advertising and Marketing costumer's Fitness consistency. **
+
+***Recommendations according to the insights got from the analysis:-***
+
+**Recommendation 1.**
+
+* Target existing Fitness tracker users who takes less than 5000 daily steps and advertise Bellabeat's wellness coaching specially on Saturdays.
+
+* Target existing Fitness tracker users who takes less than 8000 daily steps , give frequent reminders to maintain their daily steps. And motivate them for better goals so that they can achieve fitness badges and more benefits from the app.
+
+* Target existing Fitness tracker users who takes more than 10000 daily steps , appreciate them with weekly fitness badges, half/yearly coupons, encourage for social media engagement. Social media engagement might motivate more people to buy Bellabeat product *Leaf* as its an accessory and a tracker. 
+
+**Recommendation 2.**
+
+* Target existing fitness tracker users with high BMI levels and recommend small 5 days a week work out plans. Remind them for monthly weight check. It will encourage these users to have a better wellness routine. 
+
+**Recommendation 3.**
+
+* Targeted Days for late evening social media Marketing and consumer social media engagements are assumed to be Saturday, Sunday, Monday and Tuesday from the data. 
+
+**Recommendation 4.**
+
+* Give weekly badges for consistent users who burned 5 days/week 2000 or more calories.
+* Give a free Bellabeat wellness coaching for users who achieve certain amount of calories badges in 3 months or 6 months.
+* Indicate users if their Daily Sedentary Hrs are high.
+
+**Recommendation 5.**
+
+* Most advised media marketing (TV,Radio) times are Mon through Sat are 12pm and 5-7 pm. As data shows the peak workout times in a day falls in the above mentioned times. So there is a high chance that people might be watching or listening TV/Radio/Podcast etc during their active work out time.
+
+
+## **ANALYSIS**
+
+The analysis included 6 stages.
+
+* STAGE.1 (Ask):-The business task 
+* STAGE.2 (Prepare):-Details on all data sources used 
+* STAGE.3 (Process):-Process of any cleaning or manipulation of data 
+* STAGE.4 (Analyze):-The analysis 
+* STAGE.5 (Share):-Visualization on key findings 
+* STAGE.6 (Act):-High-Level Recommendations based on the analysis
+
+### STAGE.1 (*Ask*): The business task
+
+Key tasks: ***Identify***
+
+* The business task:- ***Find insights to improve marketing of a Bellabeat product from the available fitness tracker data.*** 
+* The key stakeholders :-  ***Bellabeat executive team.***
+
+### STAGE.2 (*Prepare*): Details on all data sources used 
+
+***Credibility of the data.***
+
+* **Reliable**: Not fully, sample size of the data is small.
+* **Source** : Data was taken from a [Kaggle](https://www.kaggle.com/datasets/arashnic/fitbit) Notebook(CC0: Public Domain, dataset made available through Mobius). This Kaggle data set contains personal fitness tracker information from thirty fitbit users. Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
+* **Comprehensive** : Not really, some files were incomplete compared to the available sample size
+* **Current** : No, 6 years old data
+* **Cited** : Very well Yes, This data set generated by respondents to a distributed survey via [Amazon Mechanical Turk](https://www.mturk.com/) between 03.12.2016-05.12.2016.
+
+***Key tasks***
+
+* **Downloaded** 18 Comma-separated values(csv) files from Kaggle Notebook. Total size of the data set was  338Mb.
+* **Stored** in my personal PC under a folder for this case study.
+
+* The data was organized into 18 csv files. Some files were duplicated. Most of the files were in long format. 
+* **Viewed** all the files in **excel** and choose **5 files** for the analysis.
+***DailyActivities , DailySleep , METsPerMinutes , WeightLogInfo , hourlyIntensities_merged***. As other files were duplicated and 1 file had totally unique Id set.
+
+### STAGE.3 (*Process*): Process of any cleaning or manipulation of data
+
+***Key tasks ***
+
+**Tools used for the analysis:- **
+
+I used RStudio for the entire analysis. Reasons for selecting this tool are, R Programming language was the most interesting module for me in the entire course. And all the steps in the analysis can be done in RStudio. So I really wanted to explore that. I am so proud I could do this much in R.
+
+**Data Cleaning Process Documentation**
+
+
+* **Installing** Packages
+
+
+```{r}
+library(tidyverse)
+library(readr)
+install.packages("skimr" , repos = "http://cran.us.r-project.org")
+library(skimr)
+install.packages("janitor" ,repos = "http://cran.us.r-project.org")
+library(janitor)
+
+
+```
+
+
+* **Importing** selected 5 files to the R environment
+
+
+```{r}
+DailyActivities <- read_csv("C:/Users/bobyj/OneDrive/Documents/Asha/Fitbit_users_data/Files_for_CS1/DailyActivities.csv")
+View(DailyActivities)
+DailySleep <- read_csv("C:/Users/bobyj/OneDrive/Documents/Asha/Fitbit_users_data/Files_for_CS1/DailySleep.csv")
+head(DailySleep)
+METsPerMinutes <- read_csv("C:/Users/bobyj/OneDrive/Documents/Asha/Fitbit_users_data/Files_for_CS1/METsPerMinutes.csv")
+head(METsPerMinutes)
+
+WeightLogInfo <- read_csv("C:/Users/bobyj/OneDrive/Documents/Asha/Fitbit_users_data/Files_for_CS1/WeightLogInfo.csv")
+View(WeightLogInfo)
+
+hourlyIntensities_merged <- read_csv("C:/Users/bobyj/OneDrive/Documents/Asha/Fitbit_users_data/hourlyIntensities_merged.csv")
+head(hourlyIntensities_merged)
+
+```
+
+
+* Looking and **removing duplicates**
+
+
+```{r}
+library(dplyr)
+
+#checking the ids in 5 DFs to see the compatibility
+
+DailyActivities %>% 
+  distinct(Id)
+
+DailySleep %>% 
+  distinct(Id)
+
+hourlyIntensities_merged %>% 
+  distinct(Id)
+
+WeightLogInfo %>% 
+  distinct(Id)
+
+METsPerMinutes%>% 
+  distinct(Id)
+
+
+```
+
+
+**Sorting and filtering the data**
+
+* Making new data frame with distinct Ids
+
+```{r}
+DailySleep1 <- 
+DailySleep %>% 
+  distinct(Id,SleepDay,.keep_all = TRUE)  #Sleep data for unique Id for a unique day
+head(DailySleep1)
+
+WeightLogInfo1 <- 
+  WeightLogInfo %>% 
+  distinct(Id,.keep_all = TRUE)  
+
+```
+
+* **Changing the datatype** of variable ActivityDate to **make a new variable** with Day Names
+
+```{r}
+# need to change the datatype of ActivityDate 
+
+library(lubridate)
+
+DailyActivities2 <- DailyActivities             #duplicating df before manipulating
+str(DailyActivities2)                           # has 15 variables
+
+DailyActivities2$ActivityDate1 <-
+  as.Date(DailyActivities2$ActivityDate,
+                        format = "%m/%d/%Y")    # making a new variable with converted data type
+
+str(DailyActivities2)                           # has 16 variables now
+
+
+# Converting dates to daynames
+
+DailyActivities2$DayName <- 
+  weekdays(DailyActivities2$ActivityDate1)    # new variable dayname with names of the date
+
+str(DailyActivities2)                        #has 17 variables now
+
+
+```
+
+
+* **Transforming data** to make it ready for the analysis.
+
+1.Data manipulations
+
+```{r}
+
+#made DF with only needed columns
+str(DailyActivities2)
+ActivityLog <-
+  DailyActivities2 %>% 
+  select(Id,ActivityDate,DayName,TotalSteps,Calories,SedentaryMinutes)
+head(ActivityLog)
+
+str(DailySleep1)
+SleepLog <-
+  DailySleep1 %>% 
+  select(Id,SleepDay,`TotalTimeInBed in hrs`,`Total sleeptime in hrs`)
+head(SleepLog)
+
+str(WeightLogInfo1)
+WeightLog <- 
+  WeightLogInfo1 %>% 
+  select(Id,BMI)
+head(WeightLog)
+
+```
+
+2. **Merging** data frames
+
+```{r}
+install.packages("here" , repos = "http://cran.us.r-project.org")
+library(here)
+install.packages("skimr" , repos = "http://cran.us.r-project.org")
+library(skimr)
+library(janitor)
+library(stringr)
+library(tidyr)
+
+METsPerMinutes1 <-
+separate(METsPerMinutes,ActivityMinute,into=c('Date','Time'),sep=" ")
+head(METsPerMinutes1)
+
+
+```
+
+
+The data is sorted and filtered to the need.
+
+* The final dataframes are compatible for the analysis
+
+
+### STAGE.4 (Analyze): The Analysis
+
+Now the data is stored appropriately and has been prepared for analysis. 
+
+***Key tasks***
+
+ 1. **Aggregate** data so it’s useful and accessible.
+ 
+ 
+```{r}
+install.packages("Tmisc" , repos = "http://cran.us.r-project.org")
+library(Tmisc)
+
+METsLog <-
+ METsPerMinutes1 %>% 
+  group_by(Id,Date) %>% 
+  drop_na() %>% 
+  summarise(AvgMETsPerDay=mean(METs))    #made new DF with METs per day
+head(METsLog)
+```
+ 
+ 
+ 2. **Organize and format** the data. 
+ 
+ * Renamed files n columnnames
+ 
+```{r}
+#merging 2 DFs
+
+colnames(ActivityLog)[colnames(ActivityLog) == "ActivityDate"] <- "Date"   #renamed the column
+colnames(SleepLog)[colnames(SleepLog) == "SleepDay"] <- "Date1"     #renamed the column
+
+SleepLog$Date <- strtrim(SleepLog$Date1,9)        #trimmed the column Date1
+
+SleepLog$Date1 <- NULL      #removed the variable Date1
+str(SleepLog)
+str(ActivityLog)
+
+MergeData1 <- merge(ActivityLog,SleepLog,by=c("Id","Date"))    #combined activitylog &sleeplog with common id n date
+MergeData2 <- merge(MergeData1,METsLog,by=c("Id","Date"))      #combined mergedata1 & metslog with common id n date
+
+# renaming col_names
+colnames(MergeData2)[colnames(MergeData2) == "TotalTimeInBed in hrs"] <- "BedTimeHrs"
+colnames(MergeData2)[colnames(MergeData2) == "Total sleeptime in hrs"] <- "SleepTimeHrs"
+
+MergeWt <- merge(MergeData2,WeightLog,by="Id")      # combined DFs to add weight info
+head(MergeData2)
+head(MergeWt)
+
+```
+ 
+ 
+3. Perform **calculations.** 
+* Changed the values in a variable from minutes to Hrs
+
+```{r}
+MergeData2$SedentaryHrs <- MergeData2$SedentaryMinutes/60      #changed sedentary variable to hrs
+MergeData2$SedentaryMinutes <- NULL                           #removed the sedentaryminutes variable
+
+
+```
+
+
+* The date and time data was entered in one column. So to get the daynames ,I had to **seperate** the date & time column, **change the data type** of separated date column and find the daynames into a **new column**.
+
+
+```{r}
+hourlyIntensities_merged$Time <- 
+  substr(hourlyIntensities_merged$ActivityHour , start = 11 , stop = 21)
+hourlyIntensities_merged$Date <- 
+  substr(hourlyIntensities_merged$ActivityHour , 1,9)
+hourlyIntensities_merged$Date1 <- 
+  as.Date(hourlyIntensities_merged$Date,
+                                          format = "%m/%d/%Y")
+hourlyIntensities_merged$DayName <- 
+  weekdays(hourlyIntensities_merged$Date1)
+```
+
+
+
+### STAGE.5 (Share): Visualization on key Findings
+
+* Identifying **trends and relationships.**
+
+##### Fitbit users Daily Steps Trends
+
+***VIZ.1: Total Steps On Each Day of the Week***
+
+```{r}
+library(ggplot2)
+
+ggplot(data=MergeData2) +
+  geom_point(mapping = aes(x=DayName,y=TotalSteps),color="Purple") +
+  scale_x_discrete(limits = c("Monday" , "Tuesday", "Wednesday",
+                              "Thursday" , "Friday" , "Saturday" , "Sunday")) +
+  labs(title = "Total Steps On Each Day of the Week", 
+       subtitle = "From Data of 24 Fitbit users of 22 Days")
+```
+
+
+* This 22 days data of 24 Fitbit users shows most users tent to be frequent on taking steps from Tuesday to Saturday. 
+
+* To get more details on users daily steps pattern, I looked at the users who takes more than 8000 steps a day , less than 8000 steps a day and less than 5000 steps a day for the weekly pattern.
+
+**VIZ.2: Weekly steps taking pattern in a group of people who takes more than 8000 daily steps.** 
+
+```{r}
+
+MergeData2 %>% 
+  filter(TotalSteps > 8000) %>% 
+  ggplot(mapping = aes(x=DayName,y=TotalSteps,fill=DayName)) +
+  geom_bar(stat = "summary",fun="mean") +
+  scale_x_discrete(limits = c("Monday" , "Tuesday", "Wednesday",
+                              "Thursday" , "Friday" , "Saturday" , "Sunday")) +
+  labs(title = "Avg Total steps on each day of the week ",
+       subtitle = "among the people takes more than 8000 daily steps",
+       y="Avg Total Steps")+
+  theme(legend.position = "none")
+
+
+```
+
+* This group is very consistent in taking more or equal to 10000 daily steps through out the week.
+
+***Potential candidates to be appreciated with badges, even coupons and encourage for social media engagements ***
+
+* Give coupons for consistent users for Bellabeat's other products or recommend a friend for any Bellabeat products with reduced price . Their social media engagement will give new customers to Bellabeat.
+
+**VIZ.3: Steps pattern among those who takes less than 8000 daily steps. **
+
+```{r}
+MergeData2 %>% 
+  filter(TotalSteps < 8000) %>% 
+  ggplot(mapping = aes(x=DayName,y=TotalSteps,fill=DayName)) +
+  geom_bar(stat = "summary",fun="mean") +
+  scale_x_discrete(limits = c("Monday" , "Tuesday", "Wednesday",
+                              "Thursday" , "Friday" , "Saturday" , "Sunday")) +
+  labs(title = "Avg Total steps on each day of the week ",
+       subtitle = "among the people takes less than 8000 daily steps",
+       y="Avg Total Steps")+
+  theme(legend.position = "none")
+```
+
+* Consistant Monday through wednesday , friday and saturday. 5 days per week is consistant in a month is ideal according to daily steps. 
+
+***Potential candidates to be motivated for better goals. ***
+
+**VIZ.4: Steps pattern among those who takes less than 5000 daily steps. **
+
+```{r}
+MergeData2 %>% 
+  filter(TotalSteps < 5000) %>% 
+  ggplot(mapping = aes(x=DayName,y=TotalSteps,fill=DayName)) +
+  geom_bar(stat = "summary",fun="mean") +
+  scale_x_discrete(limits = c("Monday" , "Tuesday", "Wednesday",
+                              "Thursday" , "Friday" , "Saturday" , "Sunday")) +
+  labs(title = "Avg Total steps on each day of the week ",
+       subtitle = "among the people takes less than 5000 daily steps",
+       y="Avg Total Steps")+
+  theme(legend.position = "none")
+```
+
+* Only Saturday reaching the goal of 5000 daily steps. Other days sticks around 3000 steps.
+
+***Potential candidates for Bellabeat's wellness couching.*** Sending ads on couching specially on Saturdays could increase the chances of new subscription,as people get motivated to go next step when they achieve something.
+
+**Insights 1 :-**   
+
+* Users with daily steps goal 10000,very consistent -- appreciate them with weekly fitness badges, half/yearly coupons, encourage for social media engagement.
+
+* Users with daily steps goal 8000, moderately consistent -- remind and motivate them for better goals and to be in the above group.
+
+* Users with daily steps goal 5000, not consistent -- give ads about Bellabeats wellness coaching for this group's better health. Prime day for these targeted ads will be Saturday as that is the most active day in this group. 
+
+
+**VIZ.5: Users consistency in steps and their BMI with 22 days Data of 6 Fitbit Users. **
+
+```{r}
+MergeWt %>% 
+  ggplot(aes(DayName,TotalSteps,color=BMI,size=Date))+
+  geom_point(alpha=0.5)+
+  scale_x_discrete(limits = c("Monday" , "Tuesday", "Wednesday",
+                              "Thursday" , "Friday" , "Saturday" , "Sunday"))+
+  facet_wrap(~Id)+
+  scale_color_viridis_b(option = "C")+
+  theme(axis.text.x = element_text(angle = 90))+
+  labs(title = "Users consistancy in steps and their BMI",
+       subtitle = " 22 days Data of 6 Fitbit Users")
+```
+
+* The sample size of the data set with the weight information was very small. With the available data it is clear that the fitbit users fall in normal wt (BMI 18-25 )and a little above are consistent on their daily steps in 4 weeks period. Those who fall in obese wt ( BMI > 30 ) are not even taking their minimum steps.
+
+**Insights 2 :-**
+
+* Motivate to maintain good weight -- ***Recommending small 5 days a week work out plans, reminding monthly weight check ***
+
+**VIZ.6: Users consistency in steps and their Sleep Pattern.**
+
+```{r}
+ggplot(data=MergeData2) +
+  geom_point(mapping = aes(x=SleepTimeHrs,y=TotalSteps,
+                           color=DayName),size=3) +
+  labs(title = "Users consistancy in steps and their Sleep Pattern",
+       subtitle = " 22 days Data of 24 Fitbit Users")
+```
+
+
+* Almost 70% of the Fitbit users from the available data gets 5-10 Hrs daily sleep. Which is good indicator that users monitor their sleep time and try to get enough sleep daily. People who gets less than 5 Hrs sleep has mix of daily total steps. But those who sleep more than 10 Hrs mostly takes less than 5000 steps, which is not a healthy routine.
+
+* This result made me have a look into:- 
+
+1. The relation between daily steps and daily sleep
+
+2. Total bed time and total sleep time
+
+**VIZ.7:  6 Users consistency in steps and their Sleep Pattern in 22 days time oeriod. **
+
+```{r}
+MergeWt %>% 
+  ggplot(aes(DayName,TotalSteps,color=SleepTimeHrs))+
+  geom_point(size=3)+
+  scale_x_discrete(limits = c("Monday" , "Tuesday", "Wednesday",
+                              "Thursday" , "Friday" , "Saturday" , "Sunday"))+
+  facet_wrap(~Id)+
+  scale_color_viridis_b(option = "C")+
+  theme(axis.text.x = element_text(angle = 25))+
+  labs(title = "Users consistancy in steps and their Sleep Pattern",
+       subtitle = " 22 days Data of 6 Fitbit Users")
+```
+
+
+* Users with consistent daily steps gets a consistent good sleep time .  
+
+**VIZ.8: Total bed time and total sleep time. **
+
+```{r}
+  ggplot(data=MergeData2) +
+  geom_jitter(mapping = aes(x=BedTimeHrs,y=SleepTimeHrs,color=DayName)) +
+  labs(title = "Total bed time and total sleep time On Each Day of the Week", 
+       subtitle = "From Data of 24 Fitbit users of 22 Days")+
+  annotate("text",x=9,y=4,label="Less Sleeping Set",color="purple",
+           fontface="bold",angle=30,size=4)
+```
+
+* Most users do not have much difference between Total bedtime and sleep time in each day of the week. Though a set of people in the sample tend to sleep less than 5 Hrs in their 8 Hrs Bed time period. Which could be a trend of late night browsing and online shopping. The days shown in that set are Saturday, Sunday, Monday, Tuesday.
+
+
+
+**Insights 3 :-**
+
+* Motivate users to maintain weekly steps and sleep goal  by sending reminders. 
+
+***Targeted Days for late evening Digital Marketing and consumer social media engagement could be Saturday, Sunday, Monday, Tuesday ***
+
+**VIZ.9: Relation between users daily calories burned and avg METs. **
+
+```{r}
+ ggplot(data=MergeData2) +
+  geom_point(mapping = aes(x=Calories,y=AvgMETsPerDay,color=DayName)) +
+  theme(legend.position = "none") +
+  labs(title = "Relation between users daily calories burned and avg METs",
+       subtitle = " 22 Days Data of 24 Fitbit users ",x="Daily Calories Burned")
+```
+
+* Shows a +ve correlation between daily calories burned and avg METs per day.
+
+* Fitbit calculates active minutes through a metric called metabolic equivalent of tasks (METs), also sometimes just called “metabolic equivalents.” METs measure the intensity of a particular physical exercise by comparing against a base rate.
+
+* From the data Avg Mets per day starts the value 10 , which equivalent to Bicycling, 14-15 mph and burns 715 calories per minute. Which shows the sample users are mostly active. And most crowd tend to burn close to 2000 and more calories daily.
+
+This data representation lead me to look into the relation between Daily Sedentary Hrs and calories burned per day.
+
+**VIZ.10: Relation between users daily calories burned and Daily Sedentary Hrs. **
+
+```{r}
+ggplot(data=MergeData2) +
+  geom_smooth(mapping = aes(x=SedentaryHrs,y=Calories)) +
+  labs(title = "Relation between users daily calories burned and Daily Sedentary Hrs",
+       subtitle = " 22 Days Data of 24 Fitbit users ")
+
+```
+
+* 8-10 Hrs is normal Sedentary Hrs. Users show higher sedentary Hrs even if they burn more than 2000 calories a day.
+* studies with sedentary subjects have often shown that calorie consumption increases after a period of sedentary TV watching or music listening. Also, some exercise studies indicate that subjects “compensate” for their workouts by moving less the rest of the day, diminishing the exercise benefit.
+
+**Indicate the users if they have high Sedentary Hrs.**
+
+**Insights 4 :-**
+
+* Appreciate consistent 5 days/week 2000 or more calories burned. 
+
+1. Give weekly badges.
+
+2.Monthly certain amount of badges and more can be eligible for a free Bellabeat wellness coaching. 
+
+* This lead me to find the most active Hours in a day and how it differs through each day of the week.
+
+**VIZ.11: Mean Workout Intensity Per Hour in a Day with 31 Days Data of 33 Fitbit Users. **
+
+```{r}
+ggplot(data = hourlyIntensities_merged,aes(x=Time,y=TotalIntensity,fill=DayName)) +
+  geom_bar(stat = "summary",fun="mean") +
+  theme(axis.text.x = element_text(angle = 90))+
+  scale_x_discrete(limits = c("5:00:00 AM","6:00:00 AM","7:00:00 AM",
+                              "8:00:00 AM","9:00:00 AM","10:00:00 AM",
+                              "11:00:00 AM","12:00:00 PM","1:00:00 PM",
+                              "2:00:00 PM","3:00:00 PM","4:00:00 PM",
+                              "5:00:00 PM","6:00:00 PM","7:00:00 PM",
+                              "8:00:00 PM","9:00:00 PM","10:00:00 PM" )) +
+  labs(title = "Mean Workout Intensity Per Hour in a Day",y="MeanTotalIntensity",
+       subtitle="31 Days Data of 33Fitbit Users")
+```
+
+
+* The data shows Peak workout hrs in a day :- 12 pm and 5-7 pm. Each days peak Hrs is clear from the color stacking in a bar.
+
+**Insight 5 :-**
+
+***Most advised media marketting (TV,Radio) time Mon-Sat are 12pm and 5-7 pm *** as data shows the peak workout time falls in the above mentioned time. So there is a high chance that people might be watching or listening TV/Radio/Podcast etc during their active workout sessions. 
+
+### STAGE.6 (Act):-High-Level Recommendations based on the analysis
+
+
+***Recommendation 1. ***
+
+* Target existing Fitness tracker users who takes less than 5000 daily steps, advertise Bellabeat's wellness coaching specially on Saturdays.
+
+* Target existing Fitness tracker users who takes less than 8000 daily steps and give frequent reminders to maintain their daily steps. Motivate them for better goals so that they can achieve fitness badges and more benefits from the app.
+
+* Target existing Fitness tracker users who takes more than 10000 daily steps and appreciate them with weekly fitness badges, half/yearly coupons, encourage for social media engagement. 
+
+***Recommendation 2. ***
+
+* Target existing fitness tracker users with high BMI levels and recommend small 5 days a week work out plans, remind them monthly weight check. 
+
+***Recommendation 3. ***
+
+* Targeted Days for late evening social media Marketing and consumer social media engagement are Saturday, Sunday, Monday, Tuesday.
+
+***Recommendation 4. ***
+
+* Give weekly badges for consistent 5 days/week 2000 or more calories burned.
+* Give a free Bellabeat wellness coaching for users who achieve certain amount of calories badges.
+
+***Recommendation 5. ***
+
+* Most advised media marketing (TV,Radio) times Mon-Sat are 12pm and 5-7 pm, as data shows the peak workout time falls in the above mentioned time. So there is high chance that people might be watching or listening TV/Radio/Podcast etc while their active work out sessions. 
+
+## CONCLUSION
+
+ The available data set being limited for a proper analysis, I still was able to see some trends in the people who use fitness trackers. The major limitations of the data set were, sample size was small and there was no gender information. For better insights for Bellabeat products it is advised to analyze female fitness tracker users data with a larger sample size. As conclusion Key take away is  
+**Make a consistent growth in business by Motivating, Appreciating , Advertising and Marketing costumers Fitness consistency. **
+
+
